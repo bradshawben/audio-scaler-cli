@@ -15,7 +15,7 @@ After doing (1) and (2) it will write N .wav files, one for each rate specified.
 You can pass in mp3 files or wav files.
 
 ```
-# Get hep with input args
+# Halp!
 python audio_scale.py --help
 ```
 
