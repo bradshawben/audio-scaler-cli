@@ -6,13 +6,12 @@ from scipy.io import wavfile
 
 @click.command()
 @click.option('--infile', help='Absolute or relative file path')
-@click.option('--outfile', help='Absolute or relative file path')
 @click.option('--interval-start', default=None, help='The start of the interval of audio to slice. Should be of the form MM:SS.')
 @click.option('--interval-end', default=None, help='The end of the interval of audio to slice. Should be of the form MM:SS.')
 @click.option('--rates', default=None,
               help='''Stretch factor.  If ``rate > 1``, then the signal is sped up. If ``rate < 1``, 
               then the signal is slowed down. You can specify multiple output rates like so: 0.5,0.6,0.7''')
-def audio_scaler(infile, outfile, interval_start, interval_end, rates):
+def audio_scaler(infile, interval_start, interval_end, rates):
     """Slice an audio file to a specific interval and scale the speed by a positive factor"""
 
     y, sr = librosa.load(infile)
@@ -34,7 +33,7 @@ def audio_scaler(infile, outfile, interval_start, interval_end, rates):
 
     for r in rates:
         y_scaled = pyrb.time_stretch(y_slice, sr, r)
-        wavfile.write(f'{outfile}_{round(r*100)}.wav', sr, y_scaled)
+        wavfile.write(f'{infile}_{round(r*100)}.wav', sr, y_scaled)
 
 if __name__ == '__main__':
     audio_scaler()

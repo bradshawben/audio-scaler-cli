@@ -16,13 +16,29 @@ You can pass in mp3 files or wav files.
 
 ```
 # Halp!
-python audio_scale.py --help
+> python audio_scale.py --help
+Usage: audio_scaler.py [OPTIONS]
+
+  Slice an audio file to a specific interval and scale the speed by a positive
+  factor
+
+Options:
+  --infile TEXT          Absolute or relative file path
+  --interval-start TEXT  The start of the interval of audio to slice. Should
+                         be of the form MM:SS.
+  --interval-end TEXT    The end of the interval of audio to slice. Should be
+                         of the form MM:SS.
+  --rates TEXT           Stretch factor.  If ``rate > 1``, then the signal is
+                         sped up. If ``rate < 1``,  then the signal is slowed
+                         down. You can specify multiple output rates like so:
+                         0.5,0.6,0.7
+  --help                 Show this message and exit.
 ```
 
 ```
 # Example usage
-> python audio_scaler.py --infile my_audio.mp3 --outfile my_outfile --interval-start 00:05 --interval-end 00:10 --rates 0.6,0.7,0.8
+> python audio_scaler.py --infile my_audio.mp3 --interval-start 00:05 --interval-end 00:10 --rates 0.6,0.7,0.8
 
 > ls
-my_outfile_60.wav   my_outfile_70.wav   my_outfile_80.wav
+my_audio_60.wav   my_audio_70.wav   my_audio_80.wav
 ```

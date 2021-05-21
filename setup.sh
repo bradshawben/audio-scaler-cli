@@ -13,4 +13,4 @@ fi
 brew install rubberband
 
 # Install python dependencies
-pip install -r requiements.txt
+pip install -r requirements.txt
